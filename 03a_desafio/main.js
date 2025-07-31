@@ -1,5 +1,18 @@
 const valoresRepetidos = [10, 2, 3, 4, 5, 6, 6, 8, 9, 10, 10, 11, 10, 12, 13, 13, 99, 99, 99]
 
+function removerDuplicatasComObj(array){
+    const verificador = {};
+    const novoArray = [];
+
+    for (const element of array) {
+        if (!verificador[element]) {
+            novoArray.push(element);
+            verificador[element] = true;
+        }
+    }
+    return novoArray;
+}
+
 function removerDuplicatasComSet(array) {
     const semRepeticao = new Set(array);
     return [...semRepeticao];
@@ -28,7 +41,6 @@ function removerDuplicatasComForESplice(array) {
     return novoArray;
 }
 
-
 function removerDuplicatasComFilter(array) {
     let novoArray = array;    
     
@@ -40,6 +52,12 @@ function removerDuplicatasComFilter(array) {
     });
 
     return novoArray;
+}
+
+function removerDuplicatasComFilterEIndexOf(array){
+    return array.filter((n, index)=>{
+        return array.indexOf(n) === index;
+    })
 }
 
 
