@@ -6,11 +6,10 @@ const nomes = ["Lucas", "Ana", "Carlos", "Carlos", "Carlos", "Mariana", "João",
 
 
  function contarFrequenciaComReduce(array){
-    const frequencia = {}
-
-    
-
-    return frequencia;
+    return array.reduce((objAcc, element) => {
+      objAcc[element] = (objAcc[element] || 0) + 1
+      return objAcc
+    }, {})
  }
 
  function contarFrequenciaNaMao(array){
