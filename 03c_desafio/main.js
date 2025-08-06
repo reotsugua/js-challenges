@@ -1,16 +1,42 @@
-const valoresRepetidos = [10, 2, 3, 4, 5, 6, 6, 8, 9, 10, 10, 11, 10, 12, 13, 13, 99, 99, 99];
-const nomes = ["Lucas", "Ana", "Carlos", "Carlos", "Carlos", "Mariana", "João", "Beatriz" , "Beatriz"];
+const pessoas = [
+  { nome: "Ana", idade: 25 },
+  { nome: "Bruno", idade: 30 },
+  { nome: "Clara", idade: 25 },
+  { nome: "Daniel", idade: 40 },
+  { nome: "Renan", idade: 40 },
+  { nome: "Wolney", idade: 40 }
+];
+
+function agruparPorPropriedade(array, propriedade){
+    const novoObj = {}
+
+    for (const element of array) {
+        if (!novoObj[element[propriedade]]) {
+            novoObj[element[propriedade]] = [element]
+        } else {
+            novoObj[element[propriedade]].push(element)
+        }
+    }
+
+    return novoObj
+}
+
+function agruparPorPropriedadeComReduce(array, propriedade){
+    return array.reduce((objAcc, element) => {        
+        objAcc[element[propriedade]] ??= [];
+        objAcc[element[propriedade]].push(element);
+
+        return objAcc
+    }, {})
+}
+
+function agruparPorPropriedadeComReduceReduzido(array, propriedade){
+    return array.reduce((objAcc, element) => {        
+        return (objAcc[element[propriedade]] ||= []).push(element);
+    }, {})
+}
 
 
-
-
-
- function contarFrequenciaComReduce(array){
-    
- }
-
-
-
-console.log(contarFrequenciaComReduce(nomes));
+console.log(agruparPorPropriedadeComReduce(pessoas, "idade"));
 
  
